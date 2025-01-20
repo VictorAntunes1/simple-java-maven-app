@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+        stage('Check Maven') {
+            steps {
+                sh 'echo $PATH'
+                sh 'which mvn'
+                sh 'mvn -v'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
